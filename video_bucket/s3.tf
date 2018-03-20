@@ -40,6 +40,7 @@ EOF
 	}
   tags {
     Name = "Video files for ${var.name}"
+    Customer = "${var.customer}"
     Terraform = true
   }
 }

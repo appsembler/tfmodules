@@ -37,6 +37,7 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   tags {
+    Customer = "${var.customer}"
     Terraform = true
   }
 }

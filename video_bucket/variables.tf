@@ -1,4 +1,5 @@
 variable name {}
+variable customer {}
 
 variable prefix {
   type = "string"

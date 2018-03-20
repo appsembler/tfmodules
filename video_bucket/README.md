@@ -9,6 +9,7 @@ for serving streaming video.
 module "video_bucket" {
   source = "github.com/appsembler/tfmodules//video_bucket"
   name = "${terraform.workspace}-example"
+  customer = "Example Customer"
 }
 output "access_key" {
   value = "${module.video_bucket.access_key}"
@@ -38,7 +39,8 @@ video_bucket-cloudfront = d3tv6zw86uqlhs.cloudfront.net
 
 ## Variables
 
-* `name` - name of the bucket.
+* `name` - name of the bucket (required).
+* `customer` - name of customer (required). For tracking purposes.
 * `prefix` - defaults to "appsembler". S3 requires globally unique
   bucket names. We prepend this to the bucket name to guarantee that
   (assuming we are the only ones using "appsembler-")
