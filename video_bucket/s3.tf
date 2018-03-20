@@ -31,6 +31,13 @@ resource "aws_s3_bucket" "bucket" {
 }
 EOF
 
+	cors_rule {
+    allowed_headers = ["*"]
+    allowed_methods = ["GET", "HEAD"]
+    allowed_origins = ["*"]
+    expose_headers  = ["ETag"]
+    max_age_seconds = 3000
+	}
   tags {
     Name = "Video files for ${var.name}"
     Terraform = true
