@@ -42,6 +42,9 @@ video_bucket-cloudfront = d3tv6zw86uqlhs.cloudfront.net
 * `prefix` - defaults to "appsembler". S3 requires globally unique
   bucket names. We prepend this to the bucket name to guarantee that
   (assuming we are the only ones using "appsembler-")
+* `price_class` - defaults to "PriceClass_200". CloudFront pricing
+  level. Essentially determines how global network edge coverage is
+  provided. See: https://aws.amazon.com/cloudfront/pricing/
 
 ## Outputs
 

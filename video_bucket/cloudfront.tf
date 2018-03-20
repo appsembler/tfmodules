@@ -26,7 +26,7 @@ resource "aws_cloudfront_distribution" "cdn" {
     max_ttl = 86400
   }
 
-  price_class = "PriceClass_200"
+  price_class = "${var.price_class}"
 
   restrictions {
     geo_restriction {
