@@ -2,15 +2,12 @@ resource "aws_cloudfront_distribution" "cdn" {
   origin {
     domain_name = "${aws_s3_bucket.bucket.bucket}.s3.amazonaws.com"
     origin_id = "S3-${aws_s3_bucket.bucket.bucket}"
-    s3_origin_config {
-      origin_access_identity = ""
-    }
   }
   default_root_object = "index.html"
   enabled = true
 
   default_cache_behavior {
-    allowed_methods = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    allowed_methods = ["GET", "HEAD"]
     cached_methods = ["GET", "HEAD"]
     target_origin_id = "S3-${aws_s3_bucket.bucket.bucket}"
 
