@@ -11,3 +11,9 @@ variable price_class {
 	default = "PriceClass_200"
 	description = "CloudFront price class"
 }
+
+variable allowed_referer {
+	type = "string"
+	default = ""
+	description = "referer to check for"
+}

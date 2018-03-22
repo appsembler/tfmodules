@@ -30,7 +30,9 @@ resource "aws_cloudfront_distribution" "cdn" {
       # type of restriction, blacklist, whitelist or none
       restriction_type = "none"
     }
-  }
+	}
+
+	web_acl_id = "${aws_waf_web_acl.waf_acl.id}"
 
   viewer_certificate {
     cloudfront_default_certificate = true
