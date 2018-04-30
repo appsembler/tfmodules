@@ -24,6 +24,7 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
    threshold = "1"
 
    alarm_actions = ["${var.notify_action}"]
+   ok_actions = ["${var.notify_action}"]
 
    statistic = "Minimum"
    dimensions {
