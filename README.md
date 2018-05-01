@@ -18,3 +18,17 @@ it by resource type.
 If a resource supports tags or labels, add a `Terraform = true`
 label/tag on it (this makes it easier for us to see what resources are
 managed by terraform when we're in a console).
+
+## Tags/Versions
+
+Create independent tags for each module. Eg,
+
+```
+$ git tag health-check-0.1.0
+$ git push origin --tags
+```
+
+So that module can then be used as
+`github.com/appsembler/tfmodules//health_check?ref=health-check-0.1.0`. This
+is a little odd, but necessary since these modules all live in the
+same github repo but should be independantly versioned.
