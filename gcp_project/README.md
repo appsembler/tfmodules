@@ -27,11 +27,11 @@ we will consider auto-generating this.
   supports Google's extended syntax:
   https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#sshkeyformat
   (if you want to set expiration times/etc.)
-  * `owners` - list of users to set as project owners. defaults to
-    empty list.
-  * `editors` - list of users to set as project editors. defaults to
-    empty list. May not overlap with `owners`.
-  * `domain` - domain to provide view access to. defaults to `noderabbit.com`
+* `owners` - list of users to set as project owners. defaults to
+  empty list.
+* `editors` - list of users to set as project editors. defaults to
+  empty list. May not overlap with `owners`.
+* `domain` - domain to provide view access to. defaults to `noderabbit.com`
 
 ## Outputs
 
