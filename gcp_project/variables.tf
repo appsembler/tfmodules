@@ -9,3 +9,20 @@ variable "billing_account" {
 }
 
 variable "ssh_keys" {}
+
+variable "owners" {
+  description = "users who should be owners on all projects"
+	type = "list"
+	default = []
+}
+
+variable "editors" {
+  description = "users who should be editors on all projects"
+	type = "list"
+	default = []
+}
+
+variable "domain" {
+  description = "allow view access to the project to anyone in this domain"
+  default = "noderabbit.com"
+}
