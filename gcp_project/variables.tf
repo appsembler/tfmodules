@@ -12,14 +12,14 @@ variable "ssh_keys" {}
 
 variable "owners" {
   description = "users who should be owners on all projects"
-	type = "list"
-	default = []
+  type = "list"
+  default = []
 }
 
 variable "editors" {
   description = "users who should be editors on all projects"
-	type = "list"
-	default = []
+  type = "list"
+  default = []
 }
 
 variable "domain" {
