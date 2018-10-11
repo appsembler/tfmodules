@@ -26,3 +26,9 @@ variable "domain" {
   description = "allow view access to the project to anyone in this domain"
   default = "noderabbit.com"
 }
+
+variable "services" {
+	description = "service APIs to enable"
+	type = "list"
+	default = []
+}

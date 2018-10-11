@@ -14,6 +14,7 @@ module "appsembler_infrastructure" {
   owners = ["user1@noderabbit.com", "user2@noderabbit.com"]
   editors = ["user3@noderabbit.com", "user4@noderabbit.com"]
   domain = "noderabbit.com"
+  services = ["compute.googleapis.com", "containerregistry.googleapis.com"]
 }
 ```
 
@@ -32,6 +33,9 @@ we will consider auto-generating this.
 * `editors` - list of users to set as project editors. defaults to
   empty list. May not overlap with `owners`.
 * `domain` - domain to provide view access to. defaults to `noderabbit.com`
+* `services` - list of service APIs to enable. Tip: `gcloud services
+  list --project <yourproject>` will give the list of currently
+  enabled ones.
 
 ## Outputs
 
@@ -41,5 +45,6 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-0.3.0` - support services
 * `gcp_project-0.2.0` - adds IAM setup
 * `gcp_project-0.1.0` - initial version
