@@ -45,6 +45,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-0.3.1` - use `google_project_service` instead of `google_project_services`
 * `gcp_project-0.3.0` - support services
 * `gcp_project-0.2.0` - adds IAM setup
 * `gcp_project-0.1.0` - initial version

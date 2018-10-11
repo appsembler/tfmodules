@@ -1,4 +1,5 @@
-resource "google_project_services" "project" {
+resource "google_project_service" "service" {
+	count = "${length(var.services)}"
   project = "${var.project_id}"
-  services   = "${var.services}"
+  service   = "${element(var.services, count.index)}"
 }
