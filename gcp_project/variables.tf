@@ -4,6 +4,7 @@ variable "project_id" {}
 variable "org_id" {
   default = "508326437899"
 }
+
 variable "billing_account" {
   default = "00A249-9F406E-59CEAE"
 }
@@ -12,23 +13,23 @@ variable "ssh_keys" {}
 
 variable "owners" {
   description = "users who should be owners on all projects"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "editors" {
   description = "users who should be editors on all projects"
-  type = "list"
-  default = []
+  type        = "list"
+  default     = []
 }
 
 variable "domain" {
   description = "allow view access to the project to anyone in this domain"
-  default = "noderabbit.com"
+  default     = "noderabbit.com"
 }
 
 variable "services" {
-	description = "service APIs to enable"
-	type = "list"
-	default = []
+  description = "service APIs to enable"
+  type        = "list"
+  default     = []
 }
