@@ -6,7 +6,7 @@ variable "org_id" {
 }
 
 variable "billing_account" {
-  default = "00A249-9F406E-59CEAE"
+  default = "01637F-DF8783-566018"
 }
 
 variable "ssh_keys" {}
