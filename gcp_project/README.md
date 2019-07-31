@@ -7,7 +7,7 @@ IAM users/roles are automatically enabled.
 
 ```
 module "appsembler_infrastructure" {
-  source = "github.com/appsembler/tfmodules//gcp_project?ref=gcp_project-0.2.0"
+  source = "github.com/appsembler/tfmodules//gcp_project?ref=gcp_project-0.6.0"
   name = "Appsembler Example"
   project_id = "appsembler-example"
   ssh_keys = "${file("ssh_keys.txt")}"
@@ -15,6 +15,7 @@ module "appsembler_infrastructure" {
   editors = ["user3@noderabbit.com", "user4@noderabbit.com"]
   domain = "noderabbit.com"
   services = ["compute.googleapis.com", "containerregistry.googleapis.com"]
+  labels = {"team" = "infrastructure", "contact" = "anders"}
 }
 ```
 
@@ -36,6 +37,7 @@ we will consider auto-generating this.
 * `services` - list of service APIs to enable. Tip: `gcloud services
   list --project <yourproject>` will give the list of currently
   enabled ones.
+* `labels` - (Optional) A set of key/value label pairs to assign to the project.
 
 ## Outputs
 
@@ -45,6 +47,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-0.6.0` - add support for project labels
 * `gcp_project-0.5.0` - set correct `billing_account` default
 * `gcp_project-0.4.0` - use `google-beta` provider (should fix some quota problems)
 * `gcp_project-0.3.1` - use `google_project_service` instead of `google_project_services`
