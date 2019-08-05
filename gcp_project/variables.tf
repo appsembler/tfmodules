@@ -33,3 +33,9 @@ variable "services" {
   type        = "list"
   default     = []
 }
+
+variable "labels" {
+  description = "Labels"
+  type        = "map"
+  default     = {}
+}
