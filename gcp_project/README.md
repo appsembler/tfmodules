@@ -47,6 +47,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-0.7.0` - `disable_on_destroy` and `disable_dependent_services` turned off to avoid circular dependency problems
 * `gcp_project-0.6.0` - add support for project labels
 * `gcp_project-0.5.0` - set correct `billing_account` default
 * `gcp_project-0.4.0` - use `google-beta` provider (should fix some quota problems)
