@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "bucket" {
   bucket = "${var.prefix}-${var.name}-video"
-  acl = "public-read"
+  acl    = "public-read"
 
   policy = <<EOF
 {
@@ -31,16 +31,17 @@ resource "aws_s3_bucket" "bucket" {
 }
 EOF
 
-	cors_rule {
+  cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["GET", "HEAD"]
     allowed_origins = ["*"]
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
-	}
+  }
+
   tags {
-    Name = "Video files for ${var.name}"
-    Customer = "${var.customer}"
+    Name      = "Video files for ${var.name}"
+    Customer  = "${var.customer}"
     Terraform = true
   }
 }
