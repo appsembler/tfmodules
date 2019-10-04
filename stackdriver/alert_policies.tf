@@ -8,9 +8,9 @@ resource "google_monitoring_alert_policy" "high_throttled_write_ops" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/disk/throttled_write_ops_count\" resource.type=\"gce_instance\""
-      duration        = "900s"
+      duration        = "${var.throttled_write_ops_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 1
+      threshold_value = "${var.throttled_write_ops_threshold}"
 
       trigger {
         count = 1
@@ -43,7 +43,7 @@ resource "google_monitoring_alert_policy" "high_throttled_write_ops" {
 
 resource "google_monitoring_alert_policy" "disk_usage_90" {
   project      = "${var.gce_project}"
-  display_name = "Disk usage over 90%"
+  display_name = "Disk usage over ${var.disk_usage_threshold}%"
   combiner     = "OR"
 
   conditions {
@@ -51,9 +51,9 @@ resource "google_monitoring_alert_policy" "disk_usage_90" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/disk/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"=\"used\""
-      duration        = "3600s"
+      duration        = "${var.disk_usage_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 90
+      threshold_value = "${var.disk_usage_threshold}"
 
       trigger {
         count = 1
@@ -84,9 +84,9 @@ resource "google_monitoring_alert_policy" "high_disk_operations" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/disk/operation_count\" resource.type=\"gce_instance\""
-      duration        = "900s"
+      duration        = "${var.disk_operations_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 4
+      threshold_value = "${var.disk_operations_threshold}"
 
       trigger {
         count = 1
@@ -114,7 +114,7 @@ resource "google_monitoring_alert_policy" "high_disk_operations" {
 
 resource "google_monitoring_alert_policy" "cpu_90" {
   project      = "${var.gce_project}"
-  display_name = "CPU over 90%"
+  display_name = "CPU over ${var.cpu_high_threshold}%"
   combiner     = "OR"
 
   conditions {
@@ -122,9 +122,9 @@ resource "google_monitoring_alert_policy" "cpu_90" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
-      duration        = "900s"
+      duration        = "${var.cpu_high_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 0.9
+      threshold_value = "${var.cpu_high_threshold / 100.0}"
 
       trigger {
         count = 1
@@ -147,7 +147,7 @@ resource "google_monitoring_alert_policy" "cpu_90" {
 
 resource "google_monitoring_alert_policy" "cpu_80" {
   project      = "${var.gce_project}"
-  display_name = "CPU over 80%"
+  display_name = "CPU over ${var.cpu_medium_threshold}%"
   combiner     = "OR"
 
   conditions {
@@ -155,9 +155,9 @@ resource "google_monitoring_alert_policy" "cpu_80" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
-      duration        = "3600s"
+      duration        = "${var.cpu_medium_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 0.8
+      threshold_value = "${var.cpu_medium_threshold / 100.0}"
 
       trigger {
         count = 1
@@ -180,7 +180,7 @@ resource "google_monitoring_alert_policy" "cpu_80" {
 
 resource "google_monitoring_alert_policy" "cpu_50" {
   project      = "${var.gce_project}"
-  display_name = "CPU over 50%"
+  display_name = "CPU over ${var.cpu_low_threshold}%"
   combiner     = "OR"
 
   conditions {
@@ -188,9 +188,9 @@ resource "google_monitoring_alert_policy" "cpu_50" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
-      duration        = "21600s"
+      duration        = "${var.cpu_low_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 0.5
+      threshold_value = "${var.cpu_low_threshold / 100.0}"
 
       trigger {
         count = 1
@@ -213,7 +213,7 @@ resource "google_monitoring_alert_policy" "cpu_50" {
 
 resource "google_monitoring_alert_policy" "memory_90" {
   project      = "${var.gce_project}"
-  display_name = "Memory over 90%"
+  display_name = "Memory over ${var.memory_threshold}%"
   combiner     = "OR"
 
   conditions {
@@ -221,9 +221,9 @@ resource "google_monitoring_alert_policy" "memory_90" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/memory/percent_used\" resource.type=\"gce_instance\""
-      duration        = "900s"
+      duration        = "${var.memory_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 90
+      threshold_value = "${var.memory_threshold}"
 
       trigger {
         count = 1
@@ -254,9 +254,9 @@ resource "google_monitoring_alert_policy" "slow_disk_io" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/disk/io_time\" resource.type=\"gce_instance\""
-      duration        = "900s"
+      duration        = "${var.disk_io_latency_duration}"
       comparison      = "COMPARISON_GT"
-      threshold_value = 3
+      threshold_value = "${var.disk_io_latency_threshold}"
 
       trigger {
         count = 1
