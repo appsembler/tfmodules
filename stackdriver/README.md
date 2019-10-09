@@ -51,11 +51,11 @@ triggers.
   time, which is more likely to indicate something being stuck and
   actually needing attention. So the CPU alerts are split into three
   levels with decreasing thresholds and longer durations. defaults to `90`
-* `cpu_high_threshold` - defaults to `900s`
+* `cpu_high_duration` - defaults to `900s`
 * `cpu_medium_threshold` - defaults to `80`
 * `cpu_medium_duration` - defaults to `3600s`
 * `cpu_low_threshold` - defaults to `50`
-* `cpu_low_threshold` - defaults to `21600s` (6 hours)
+* `cpu_low_duration` - defaults to `21600s` (6 hours)
 * `memory_threshold` - percentage memory usage. defaults to `90`.
 * `memory_duration` - defaults to `900s`
 * `disk_io_latency_threshold` - average latency on disk io. defaults
