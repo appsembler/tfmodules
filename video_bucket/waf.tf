@@ -3,9 +3,10 @@ resource "aws_waf_byte_match_set" "byte_set" {
   name = "tf_waf_byte_match_set"
 
   byte_match_tuples {
-    text_transformation = "NONE"
-    target_string = "${var.allowed_referer}"
+    text_transformation   = "NONE"
+    target_string         = "${var.allowed_referer}"
     positional_constraint = "CONTAINS"
+
     field_to_match {
       type = "HEADER"
       data = "referer"
@@ -31,9 +32,10 @@ resource "aws_waf_byte_match_set" "referer_set" {
   name = "referer_set"
 
   byte_match_tuples {
-    text_transformation = "NONE"
-    target_string = "://"
+    text_transformation   = "NONE"
+    target_string         = "://"
     positional_constraint = "CONTAINS"
+
     field_to_match {
       type = "HEADER"
       data = "referer"
@@ -53,10 +55,12 @@ resource "aws_waf_rule" "referer_set" {
   }
 }
 
-
 resource "aws_waf_web_acl" "waf_acl" {
-  depends_on  = ["aws_waf_byte_match_set.byte_set", "aws_waf_rule.wafrule",
-                 "aws_waf_byte_match_set.referer_set", "aws_waf_rule.referer_set"]
+  depends_on = ["aws_waf_byte_match_set.byte_set", "aws_waf_rule.wafrule",
+    "aws_waf_byte_match_set.referer_set",
+    "aws_waf_rule.referer_set",
+  ]
+
   name        = "tfWebACL"
   metric_name = "tfWebACL"
 
@@ -74,6 +78,7 @@ resource "aws_waf_web_acl" "waf_acl" {
     rule_id  = "${aws_waf_rule.wafrule.id}"
     type     = "REGULAR"
   }
+
   rules {
     # otherwise, if the referer is set, block them
     # (JS players sometimes strip referers out)
