@@ -24,7 +24,7 @@ module "amc_ficus_health_check" {
 * `failure_threshold` - The number of consecutive health checks that
   an endpoint must pass or fail before the alarm is
   raised/cleared. Defaults to 3.
-* `request_internal` - number of seconds between checks. defaults to 30.
+* `request_interval` - number of seconds between checks. defaults to 30.
 * `regions` - list of regions to run the checks from. defaults to
   `["us-east-1", "eu-west-1", "us-west-1"]`. This is probably fine for
   most setups. If the check is for a customer with a large presence in
