@@ -29,7 +29,7 @@ resource "google_monitoring_alert_policy" "high_throttled_write_ops" {
   }
 
   documentation {
-    content   = "This tends to correlate with a process going out of control and writing files in an infinite loop."
+    content   = "This tends to correlate with a process going out of control and writing files in an infinite loop.\n\nRunbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43582006/ALERT+High+Throttled+Write+Ops"
     mime_type = "text/markdown"
   }
 
@@ -66,6 +66,11 @@ resource "google_monitoring_alert_policy" "disk_usage_90" {
     }
   }
 
+  documentation {
+    content   = "Runbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43451024/ALERT+Disk+filling+up"
+    mime_type = "text/markdown"
+  }
+
   # we just use this label to make it clear that this is a Terraform managed resource
   user_labels {
     terraform = true
@@ -100,7 +105,7 @@ resource "google_monitoring_alert_policy" "high_disk_operations" {
   }
 
   documentation {
-    content   = "This probably means that some process has gone out of control."
+    content   = "This probably means that some process has gone out of control.\n\nRunbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43778617/ALERT+High+Disk+Operations"
     mime_type = "text/markdown"
   }
 
@@ -137,6 +142,11 @@ resource "google_monitoring_alert_policy" "cpu_90" {
     }
   }
 
+  documentation {
+    content   = "Runbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43778627/ALERT+High+CPU"
+    mime_type = "text/markdown"
+  }
+
   # we just use this label to make it clear that this is a Terraform managed resource
   user_labels {
     terraform = true
@@ -168,6 +178,11 @@ resource "google_monitoring_alert_policy" "cpu_80" {
         per_series_aligner = "ALIGN_MEAN"
       }
     }
+  }
+
+  documentation {
+    content   = "Runbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43778627/ALERT+High+CPU"
+    mime_type = "text/markdown"
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
@@ -203,6 +218,11 @@ resource "google_monitoring_alert_policy" "cpu_50" {
     }
   }
 
+  documentation {
+    content   = "Runbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43778627/ALERT+High+CPU"
+    mime_type = "text/markdown"
+  }
+
   # we just use this label to make it clear that this is a Terraform managed resource
   user_labels {
     terraform = true
@@ -234,6 +254,11 @@ resource "google_monitoring_alert_policy" "memory_90" {
         per_series_aligner = "ALIGN_MEAN"
       }
     }
+  }
+
+  documentation {
+    content   = "Runbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43385928/ALERT+High+Memory+Usage"
+    mime_type = "text/markdown"
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
@@ -270,7 +295,7 @@ resource "google_monitoring_alert_policy" "slow_disk_io" {
   }
 
   documentation {
-    content   = "Disk I/O has been over 3ms for 15 minutes. This probably indicates a lot of contention or a hardware issue."
+    content   = "Disk I/O has been over 3ms for 15 minutes. This probably indicates a lot of contention or a hardware issue.\n\nRunbook: https://appsembler.atlassian.net/wiki/spaces/ED/pages/43352733/ALERT+Slow+Disk+IO"
     mime_type = "text/markdown"
   }
 
