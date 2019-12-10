@@ -69,5 +69,6 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-0.3.0` - add runbook links for every alert
 * `stackdriver-0.2.0` - parameterize threshold/duration for all alerts
 * `stackdriver-0.1.0` - initial version
