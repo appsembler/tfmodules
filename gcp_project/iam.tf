@@ -1,7 +1,7 @@
 resource "google_project_iam_member" "owners" {
-  project = "${google_project.project.project_id}"
+  project = google_project.project.project_id
   role    = "roles/owner"
-  count   = "${length(var.owners)}"
+  count   = length(var.owners)
   member  = "user:${element(var.owners, count.index)}"
 }
 
