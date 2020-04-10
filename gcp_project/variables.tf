@@ -9,7 +9,14 @@ variable "billing_account" {
   default = "01637F-DF8783-566018"
 }
 
-variable "ssh_keys" {}
+variable "os_login" {
+  description = "enable OS Login"
+  default = false
+}
+
+variable "ssh_keys" {
+  default = ""
+}
 
 variable "owners" {
   description = "users who should be owners on all projects"

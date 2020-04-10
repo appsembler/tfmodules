@@ -24,11 +24,13 @@ module "appsembler_infrastructure" {
 * `name` - name of the Project (required)
 * `project_id` - project id to use. Currently required, but eventually
 we will consider auto-generating this.
+* `os_login` - (default `false`) enable OS Login for the project. SSH keys will be disregarded.
 * `ssh_keys` - string containing all the SSH keys. One per line
   (newline separated), each line starts with `username:`. Also
   supports Google's extended syntax:
   https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys#sshkeyformat
-  (if you want to set expiration times/etc.)
+  (if you want to set expiration times/etc.) If `os_login` is `true`,
+  this parameter is ignored.
 * `owners` - list of users to set as project owners. defaults to
   empty list.
 * `editors` - list of users to set as project editors. defaults to
