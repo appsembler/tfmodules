@@ -1,5 +1,5 @@
 resource "google_monitoring_alert_policy" "high_throttled_write_ops" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "High Throttled Write Ops"
   combiner     = "OR"
 
@@ -8,9 +8,9 @@ resource "google_monitoring_alert_policy" "high_throttled_write_ops" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/disk/throttled_write_ops_count\" resource.type=\"gce_instance\""
-      duration        = "${var.throttled_write_ops_duration}"
+      duration        = var.throttled_write_ops_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.throttled_write_ops_threshold}"
+      threshold_value = var.throttled_write_ops_threshold
 
       trigger {
         count = 1
@@ -34,15 +34,15 @@ resource "google_monitoring_alert_policy" "high_throttled_write_ops" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "disk_usage_90" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "Disk usage over ${var.disk_usage_threshold}%"
   combiner     = "OR"
 
@@ -51,9 +51,9 @@ resource "google_monitoring_alert_policy" "disk_usage_90" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/disk/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"=\"used\""
-      duration        = "${var.disk_usage_duration}"
+      duration        = var.disk_usage_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.disk_usage_threshold}"
+      threshold_value = var.disk_usage_threshold
 
       trigger {
         count = 1
@@ -72,15 +72,15 @@ resource "google_monitoring_alert_policy" "disk_usage_90" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "high_disk_operations" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "High Disk Operations"
   combiner     = "OR"
 
@@ -89,9 +89,9 @@ resource "google_monitoring_alert_policy" "high_disk_operations" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/disk/operation_count\" resource.type=\"gce_instance\""
-      duration        = "${var.disk_operations_duration}"
+      duration        = var.disk_operations_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.disk_operations_threshold}"
+      threshold_value = var.disk_operations_threshold
 
       trigger {
         count = 1
@@ -110,15 +110,15 @@ resource "google_monitoring_alert_policy" "high_disk_operations" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "cpu_90" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "CPU over ${var.cpu_high_threshold}%"
   combiner     = "OR"
 
@@ -127,7 +127,7 @@ resource "google_monitoring_alert_policy" "cpu_90" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
-      duration        = "${var.cpu_high_duration}"
+      duration        = var.cpu_high_duration
       comparison      = "COMPARISON_GT"
       threshold_value = "${var.cpu_high_threshold / 100.0}"
 
@@ -148,15 +148,15 @@ resource "google_monitoring_alert_policy" "cpu_90" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "cpu_80" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "CPU over ${var.cpu_medium_threshold}%"
   combiner     = "OR"
 
@@ -165,7 +165,7 @@ resource "google_monitoring_alert_policy" "cpu_80" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
-      duration        = "${var.cpu_medium_duration}"
+      duration        = var.cpu_medium_duration
       comparison      = "COMPARISON_GT"
       threshold_value = "${var.cpu_medium_threshold / 100.0}"
 
@@ -186,15 +186,15 @@ resource "google_monitoring_alert_policy" "cpu_80" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "cpu_50" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "CPU over ${var.cpu_low_threshold}%"
   combiner     = "OR"
 
@@ -203,7 +203,7 @@ resource "google_monitoring_alert_policy" "cpu_50" {
 
     condition_threshold {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
-      duration        = "${var.cpu_low_duration}"
+      duration        = var.cpu_low_duration
       comparison      = "COMPARISON_GT"
       threshold_value = "${var.cpu_low_threshold / 100.0}"
 
@@ -224,15 +224,15 @@ resource "google_monitoring_alert_policy" "cpu_50" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "memory_90" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "Memory over ${var.memory_threshold}%"
   combiner     = "OR"
 
@@ -241,9 +241,9 @@ resource "google_monitoring_alert_policy" "memory_90" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/memory/percent_used\" resource.type=\"gce_instance\""
-      duration        = "${var.memory_duration}"
+      duration        = var.memory_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.memory_threshold}"
+      threshold_value = var.memory_threshold
 
       trigger {
         count = 1
@@ -262,15 +262,15 @@ resource "google_monitoring_alert_policy" "memory_90" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
 
 resource "google_monitoring_alert_policy" "slow_disk_io" {
-  project      = "${var.gce_project}"
+  project      = var.gce_project
   display_name = "Slow disk I/O"
   combiner     = "OR"
 
@@ -279,9 +279,9 @@ resource "google_monitoring_alert_policy" "slow_disk_io" {
 
     condition_threshold {
       filter          = "metric.type=\"agent.googleapis.com/disk/io_time\" resource.type=\"gce_instance\""
-      duration        = "${var.disk_io_latency_duration}"
+      duration        = var.disk_io_latency_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.disk_io_latency_threshold}"
+      threshold_value = var.disk_io_latency_threshold
 
       trigger {
         count = 1
@@ -300,9 +300,9 @@ resource "google_monitoring_alert_policy" "slow_disk_io" {
   }
 
   # we just use this label to make it clear that this is a Terraform managed resource
-  user_labels {
+  user_labels = {
     terraform = true
   }
 
-  notification_channels = "${var.notification_channels}"
+  notification_channels = var.notification_channels
 }
