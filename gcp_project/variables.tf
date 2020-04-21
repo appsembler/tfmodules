@@ -11,7 +11,7 @@ variable "billing_account" {
 
 variable "os_login" {
   description = "enable OS Login"
-  default = false
+  default     = false
 }
 
 variable "ssh_keys" {
