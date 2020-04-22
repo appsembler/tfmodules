@@ -1,12 +1,21 @@
-on: pull_request
 name: Terraform
+on: pull_request
+env:
+  tf_version: 'latest'
+  tf_working_dir: '.'
 jobs:
-  terraform-fmt:
+  terraform:
+    name: 'Terraform'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: terraform-fmt
-      uses: hashicorp/terraform-github-actions/fmt@v0.2.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TF_ACTION_WORKING_DIR: .
+      - name: 'Checkout'
+        uses: actions/checkout@master
+      - name: 'Terraform Format'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: ${{ env.tf_version }}
+          tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: ${{ env.tf_working_dir }}
+          tf_actions_comment: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
