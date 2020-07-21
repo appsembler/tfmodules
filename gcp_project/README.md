@@ -49,6 +49,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-0.7.2` - some more small 0.12 syntax changes
 * `gcp_project-0.7.1` - proper full 0.12 syntax
 * `gcp_project-0.7.0` - avoid deleting dependent services on destroy
 * `gcp_project-0.6.0` - add support for project labels

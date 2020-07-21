@@ -1,5 +1,8 @@
-variable "name" {}
-variable "project_id" {}
+variable "name" {
+}
+
+variable "project_id" {
+}
 
 variable "org_id" {
   default = "508326437899"
@@ -20,13 +23,13 @@ variable "ssh_keys" {
 
 variable "owners" {
   description = "users who should be owners on all projects"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
 variable "editors" {
   description = "users who should be editors on all projects"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
@@ -37,12 +40,13 @@ variable "domain" {
 
 variable "services" {
   description = "service APIs to enable"
-  type        = "list"
+  type        = list(string)
   default     = []
 }
 
 variable "labels" {
   description = "Labels"
-  type        = "map"
+  type        = map(string)
   default     = {}
 }
+
