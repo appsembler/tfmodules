@@ -69,6 +69,9 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-1.1.0` - only include `sd.*` devices for disk usage
+  (exlude `loop0`, etc, which can show up as 100% full but not
+  actually indicate a problem)
 * `stackdriver-1.0.0` - terraform 0.12 conversion
 * `stackdriver-0.3.0` - add runbook links for every alert
 * `stackdriver-0.2.0` - parameterize threshold/duration for all alerts

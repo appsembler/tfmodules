@@ -50,7 +50,7 @@ resource "google_monitoring_alert_policy" "disk_usage_90" {
     display_name = "GCE VM Instance - Disk utilization for used"
 
     condition_threshold {
-      filter          = "metric.type=\"agent.googleapis.com/disk/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"=\"used\""
+      filter          = "metric.type=\"agent.googleapis.com/disk/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"=\"used\" metric.label.\"device\"=monitoring.regex.full_match(\"sd.*\")"
       duration        = var.disk_usage_duration
       comparison      = "COMPARISON_GT"
       threshold_value = var.disk_usage_threshold
