@@ -69,6 +69,7 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-1.1.1` - fix a 0.12 warning about type constraints
 * `stackdriver-1.1.0` - only include `sd.*` devices for disk usage
   (exlude `loop0`, etc, which can show up as 100% full but not
   actually indicate a problem)
