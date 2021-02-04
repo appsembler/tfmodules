@@ -129,7 +129,7 @@ resource "google_monitoring_alert_policy" "cpu_90" {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
       duration        = var.cpu_high_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.cpu_high_threshold / 100.0}"
+      threshold_value = var.cpu_high_threshold / 100.0
 
       trigger {
         count = 1
@@ -167,7 +167,7 @@ resource "google_monitoring_alert_policy" "cpu_80" {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
       duration        = var.cpu_medium_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.cpu_medium_threshold / 100.0}"
+      threshold_value = var.cpu_medium_threshold / 100.0
 
       trigger {
         count = 1
@@ -205,7 +205,7 @@ resource "google_monitoring_alert_policy" "cpu_50" {
       filter          = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" resource.type=\"gce_instance\""
       duration        = var.cpu_low_duration
       comparison      = "COMPARISON_GT"
-      threshold_value = "${var.cpu_low_threshold / 100.0}"
+      threshold_value = var.cpu_low_threshold / 100.0
 
       trigger {
         count = 1
