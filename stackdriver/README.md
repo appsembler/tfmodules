@@ -69,6 +69,7 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-2.0.0` - require terraform 1.0.0
 * `stackdriver-1.1.2` - fix a 0.12 warning about interpolation-only expressions
 * `stackdriver-1.1.1` - fix a 0.12 warning about type constraints
 * `stackdriver-1.1.0` - only include `sd.*` devices for disk usage
