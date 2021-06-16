@@ -99,7 +99,7 @@ variable "cloud_sql_disk_write_ops_duration" {
 }
 
 variable "cloud_sql_disk_write_ops_threshold" {
-  default = "1"
+  default = "100"
 }
 
 variable "cloud_sql_memory_utilization_duration" {
