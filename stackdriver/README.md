@@ -61,6 +61,16 @@ triggers.
 * `disk_io_latency_threshold` - average latency on disk io. defaults
    to `3`
 * `disk_io_latency_duration` - defaults to `900s`.
+* `cloud_sql_high_cpu_threshold` - defaults to `0.5`
+* `cloud_sql_high_cpu_duration` - defaults to `3600s`
+* `cloud_sql_disk_utilization_threshold` - defaults to `0.9`
+* `cloud_sql_disk_utilization_duration` - defaults to `3600s`
+* `cloud_sql_disk_read_ops_threshold` - defaults to `1`
+* `cloud_sql_disk_read_ops_duration` - defaults to `3600s`
+* `cloud_sql_disk_write_ops_threshold` - defaults to `1`
+* `cloud_sql_disk_write_ops_duration` - defaults to `3600s`
+* `cloud_sql_memory_utilization_threshold` - defaults to `0.8`
+* `cloud_sql_memory_utilization_duration` - defaults to `3600s`
 
 
 ## Outputs
@@ -69,6 +79,7 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-2.1.0` - add Cloud SQL monitoring (basic CPU, disk, memory utilization)
 * `stackdriver-2.0.0` - require terraform 1.0.0
 * `stackdriver-1.1.2` - fix a 0.12 warning about interpolation-only expressions
 * `stackdriver-1.1.1` - fix a 0.12 warning about type constraints
