@@ -69,3 +69,44 @@ variable "disk_io_latency_threshold" {
 variable "disk_io_latency_duration" {
   default = "900s"
 }
+
+variable "cloud_sql_high_cpu_duration" {
+  default = "3600s"
+}
+
+variable "cloud_sql_high_cpu_threshold" {
+  default = "0.5"
+}
+
+variable "cloud_sql_disk_utilization_duration" {
+  default = "3600s"
+}
+
+variable "cloud_sql_disk_utilization_threshold" {
+  default = "0.9"
+}
+
+variable "cloud_sql_disk_read_ops_duration" {
+  default = "3600s"
+}
+
+variable "cloud_sql_disk_read_ops_threshold" {
+  default = "1"
+}
+
+variable "cloud_sql_disk_write_ops_duration" {
+  default = "3600s"
+}
+
+variable "cloud_sql_disk_write_ops_threshold" {
+  default = "1"
+}
+
+variable "cloud_sql_memory_utilization_duration" {
+  default = "3600s"
+}
+
+variable "cloud_sql_memory_utilization_threshold" {
+  default = "0.8"
+}
+
