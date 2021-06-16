@@ -306,3 +306,193 @@ resource "google_monitoring_alert_policy" "slow_disk_io" {
 
   notification_channels = var.notification_channels
 }
+
+resource "google_monitoring_alert_policy" "cloudsql_cpu_utilization" {
+  project      = var.gce_project
+  display_name = "Cloud SQL CPU Utilization High"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Cloud SQL Database - CPU utilization [MEAN]"
+
+    condition_threshold {
+      filter          = "metric.type=\"cloudsql.googleapis.com/database/cpu/utilization\" resource.type=\"cloudsql_database\""
+      duration        = var.cloud_sql_high_cpu_duration
+      comparison      = "COMPARISON_GT"
+      threshold_value = var.cloud_sql_high_cpu_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period   = "300s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1942094026/ALERT+Cloud+SQL+CPU+Utilization+High)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
+
+resource "google_monitoring_alert_policy" "cloudsql_disk_utilization" {
+  project      = var.gce_project
+  display_name = "Cloud SQL Disk Utilization High"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Cloud SQL Disk utilization"
+
+    condition_threshold {
+      filter          = "metric.type='cloudsql.googleapis.com/database/disk/utilization' resource.type=\"cloudsql_database\""
+      duration        = var.cloud_sql_disk_utilization_duration
+      comparison      = "COMPARISON_GT"
+      threshold_value = var.cloud_sql_disk_utilization_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period   = "300s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1938555602/ALERT+Cloud+SQL+Disk+Utilization+High)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
+
+resource "google_monitoring_alert_policy" "cloudsql_disk_read_ops" {
+  project      = var.gce_project
+  display_name = "Cloud SQL Disk Read Ops High"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Cloud SQL Disk Read Ops"
+
+    condition_threshold {
+      filter          = "metric.type='cloudsql.googleapis.com/database/disk/read_ops_count' resource.type=\"cloudsql_database\""
+      duration        = var.cloud_sql_disk_read_ops_duration
+      comparison      = "COMPARISON_GT"
+      threshold_value = var.cloud_sql_disk_read_ops_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period   = "300s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1943502879/ALERT+Cloud+SQL+Disk+Read+Ops+High)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
+
+resource "google_monitoring_alert_policy" "cloudsql_disk_write_ops" {
+  project      = var.gce_project
+  display_name = "Cloud SQL Disk Write Ops High"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Cloud SQL Disk Write Ops"
+
+    condition_threshold {
+      filter          = "metric.type='cloudsql.googleapis.com/database/disk/write_ops_count' resource.type=\"cloudsql_database\""
+      duration        = var.cloud_sql_disk_write_ops_duration
+      comparison      = "COMPARISON_GT"
+      threshold_value = var.cloud_sql_disk_write_ops_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period   = "300s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1943502879/ALERT+Cloud+SQL+Disk+Write+Ops+High)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
+
+resource "google_monitoring_alert_policy" "cloudsql_memory_utilization" {
+  project      = var.gce_project
+  display_name = "Cloud SQL Memory Utilization High"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Cloud SQL Memory Utilization"
+
+    condition_threshold {
+      filter          = "metric.type='cloudsql.googleapis.com/database/memory/utilization' resource.type=\"cloudsql_database\""
+      duration        = var.cloud_sql_memory_utilization_duration
+      comparison      = "COMPARISON_GT"
+      threshold_value = var.cloud_sql_memory_utilization_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period   = "300s"
+        per_series_aligner = "ALIGN_RATE"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1938850392/ALERT+Cloud+SQL+Memory+Utilization+High)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
