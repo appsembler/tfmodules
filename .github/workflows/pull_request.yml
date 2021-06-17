@@ -20,9 +20,12 @@ jobs:
     - name: terraform-fmt health_check
       run:
         terraform fmt health_check
-    - name: terraform-fmt pagerduty_sns
-      run:
-        terraform fmt pagerduty_sns
     - name: terraform-fmt video_bucket
       run:
         terraform fmt video_bucket
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.0
+    - name: terraform-fmt pagerduty_sns
+      run:
+        terraform fmt pagerduty_sns
