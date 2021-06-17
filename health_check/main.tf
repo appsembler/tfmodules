@@ -8,7 +8,7 @@ resource "aws_route53_health_check" "check" {
 
   regions = "${var.regions}"
 
-  tags {
+  tags = {
     Name      = "tf-${var.name}-health-check"
     Terraform = true
   }
@@ -28,7 +28,7 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
 
   statistic = "Minimum"
 
-  dimensions {
+  dimensions = {
     HealthCheckId = "${aws_route53_health_check.check.id}"
   }
 
