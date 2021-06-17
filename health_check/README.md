@@ -35,3 +35,7 @@ module "amc_ficus_health_check" {
 ## Outputs
 
 There are no outputs from this module.
+
+## Releases
+
+* `health-check-1.0.0` - terraform 1.0.0 support
