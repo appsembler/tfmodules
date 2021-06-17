@@ -8,9 +8,6 @@ jobs:
     - uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.12.24
-    - name: terraform-fmt gcp_project
-      run:
-        terraform fmt gcp_project
     - name: terraform-fmt stackdriver
       run:
         terraform fmt stackdriver
@@ -26,3 +23,9 @@ jobs:
     - name: terraform-fmt video_bucket
       run:
         terraform fmt video_bucket
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.0
+    - name: terraform-fmt gcp_project
+      run:
+        terraform fmt gcp_project
