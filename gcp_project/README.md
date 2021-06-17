@@ -49,6 +49,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-1.0.0` - Terraform 1.0.0 support
 * `gcp_project-0.9.0` - no longer need google-beta provider
 * `gcp_project-0.8.1` - OS login integrated
 * `gcp_project-0.7.2` - some more small 0.12 syntax changes
