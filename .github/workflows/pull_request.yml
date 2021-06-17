@@ -11,9 +11,6 @@ jobs:
     - name: terraform-fmt gcp_project
       run:
         terraform fmt gcp_project
-    - name: terraform-fmt stackdriver
-      run:
-        terraform fmt stackdriver
     - uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 0.11.14
@@ -29,3 +26,6 @@ jobs:
     - name: terraform-fmt pagerduty_sns
       run:
         terraform fmt pagerduty_sns
+    - name: terraform-fmt stackdriver
+      run:
+        terraform fmt stackdriver
