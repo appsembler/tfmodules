@@ -33,3 +33,7 @@ topic_arn = "arn:..."
 
 * `arn` - the ARN of the SNS topic. This is typically needed for
   connecting it to an alarm.
+
+## Releases
+
+* `pagerduty-sns-1.0.0` - Terraform 1.0.0 support
