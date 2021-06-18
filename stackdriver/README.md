@@ -73,6 +73,8 @@ triggers.
 * `cloud_sql_memory_utilization_duration` - defaults to `3600s`
 * `pubsub_message_age_threshold` - defaults to `10` (seconds)
 * `pubsub_message_age_duration` - defaults to `3600s`
+* `datastore_high_reads_threshold` - defaults to `50000`
+* `datastore_high_reads_duration` - defaults to `3600s`
 
 ## Outputs
 

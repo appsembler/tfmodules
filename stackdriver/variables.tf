@@ -117,3 +117,11 @@ variable "pubsub_message_age_duration" {
 variable "pubsub_message_age_threshold" {
   default = "10"
 }
+
+variable "datastore_high_reads_threshold" {
+  default = "50000"
+}
+
+variable "datastore_high_reads_duration" {
+  default = "3600s"
+}

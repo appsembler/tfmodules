@@ -512,6 +512,7 @@ resource "google_monitoring_alert_policy" "pubsub_message_age" {
       filter          = "metric.type=\"pubsub.googleapis.com/subscription/oldest_unacked_message_age\" resource.type=\"pubsub_subscription\""
       duration        = var.pubsub_message_age_duration
       comparison      = "COMPARISON_GT"
+
       threshold_value = var.pubsub_message_age_threshold
 
       trigger {
@@ -527,6 +528,46 @@ resource "google_monitoring_alert_policy" "pubsub_message_age" {
 
   documentation {
     content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1957920775/ALERT+Pub+Sub+Message+Age)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
+
+resource "google_monitoring_alert_policy" "datastore_high_reads" {
+  project      = var.gce_project
+  display_name = "Datastore High Reads"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Sizes of read entities [COUNT]"
+
+    condition_threshold {
+      filter          = "metric.type=\"datastore.googleapis.com/entity/read_sizes\" resource.type=\"datastore_request\"",
+      duration        = var.datastore_high_reads_duration
+      comparison      = "COMPARISON_GT"
+
+      threshold_value = var.datastore_high_reads_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period     = "300s"
+	per_series_aligner   = "ALIGN_DELTA"
+	cross_series_reducer = "REDUCE_COUNT"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1957363885/ALERT+Datastore+High+Reads)"
     mime_type = "text/markdown"
   }
 
