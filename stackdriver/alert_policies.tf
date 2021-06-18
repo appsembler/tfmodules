@@ -548,7 +548,7 @@ resource "google_monitoring_alert_policy" "datastore_high_reads" {
     display_name = "Sizes of read entities [COUNT]"
 
     condition_threshold {
-      filter          = "metric.type=\"datastore.googleapis.com/entity/read_sizes\" resource.type=\"datastore_request\"",
+      filter          = "metric.type=\"datastore.googleapis.com/entity/read_sizes\" resource.type=\"datastore_request\""
       duration        = var.datastore_high_reads_duration
       comparison      = "COMPARISON_GT"
 
@@ -588,7 +588,7 @@ resource "google_monitoring_alert_policy" "datastore_high_writes" {
     display_name = "Sizes of write entities [COUNT]"
 
     condition_threshold {
-      filter          = "metric.type=\"datastore.googleapis.com/entity/write_sizes\" resource.type=\"datastore_request\"",
+      filter          = "metric.type=\"datastore.googleapis.com/entity/write_sizes\" resource.type=\"datastore_request\""
       duration        = var.datastore_high_writes_duration
       comparison      = "COMPARISON_GT"
 
