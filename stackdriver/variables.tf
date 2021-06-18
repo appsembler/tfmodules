@@ -125,3 +125,11 @@ variable "datastore_high_reads_threshold" {
 variable "datastore_high_reads_duration" {
   default = "3600s"
 }
+
+variable "datastore_high_writes_threshold" {
+  default = "20000"
+}
+
+variable "datastore_high_writes_duration" {
+  default = "3600s"
+}

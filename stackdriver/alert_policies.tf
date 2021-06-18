@@ -578,3 +578,43 @@ resource "google_monitoring_alert_policy" "datastore_high_reads" {
 
   notification_channels = var.notification_channels
 }
+
+resource "google_monitoring_alert_policy" "datastore_high_writes" {
+  project      = var.gce_project
+  display_name = "Datastore High Writes"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Sizes of write entities [COUNT]"
+
+    condition_threshold {
+      filter          = "metric.type=\"datastore.googleapis.com/entity/write_sizes\" resource.type=\"datastore_request\"",
+      duration        = var.datastore_high_writes_duration
+      comparison      = "COMPARISON_GT"
+
+      threshold_value = var.datastore_high_writes_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period     = "300s"
+	per_series_aligner   = "ALIGN_DELTA"
+	cross_series_reducer = "REDUCE_COUNT"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1954808090/ALERT+Datastore+Writes)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}
