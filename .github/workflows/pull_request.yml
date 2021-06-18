@@ -7,12 +7,6 @@ jobs:
     - uses: actions/checkout@master
     - uses: hashicorp/setup-terraform@v1
       with:
-        terraform_version: 0.11.14
-    - name: terraform-fmt video_bucket
-      run:
-        terraform fmt video_bucket
-    - uses: hashicorp/setup-terraform@v1
-      with:
         terraform_version: 1.0.0
     - name: terraform-fmt health_check
       run:
