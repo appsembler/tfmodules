@@ -499,3 +499,41 @@ resource "google_monitoring_alert_policy" "cloudsql_memory_utilization" {
 
   notification_channels = var.notification_channels
 }
+
+resource "google_monitoring_alert_policy" "pubsub_message_age" {
+  project      = var.gce_project
+  display_name = "Pub/Sub Message Age"
+  combiner     = "OR"
+
+  conditions {
+    display_name = "Cloud Pub/Sub Subscription - Oldest unacked message age [MEAN]"
+
+    condition_threshold {
+      filter          = "metric.type=\"pubsub.googleapis.com/subscription/oldest_unacked_message_age\" resource.type=\"pubsub_subscription\""
+      duration        = var.pubsub_message_age_duration
+      comparison      = "COMPARISON_GT"
+      threshold_value = var.pubsub_message_age_threshold
+
+      trigger {
+        count = 1
+      }
+
+      aggregations {
+        alignment_period     = "300s"
+        per_series_aligner   = "ALIGN_MEAN"
+      }
+    }
+  }
+
+  documentation {
+    content   = "[runbook](https://appsembler.atlassian.net/wiki/spaces/ED/pages/1957920775/ALERT+Pub+Sub+Message+Age)"
+    mime_type = "text/markdown"
+  }
+
+  # we just use this label to make it clear that this is a Terraform managed resource
+  user_labels = {
+    terraform = true
+  }
+
+  notification_channels = var.notification_channels
+}

@@ -71,7 +71,8 @@ triggers.
 * `cloud_sql_disk_write_ops_duration` - defaults to `3600s`
 * `cloud_sql_memory_utilization_threshold` - defaults to `0.8`
 * `cloud_sql_memory_utilization_duration` - defaults to `3600s`
-
+* `pubsub_message_age_threshold` - defaults to `10` (seconds)
+* `pubsub_message_age_duration` - defaults to `3600s`
 
 ## Outputs
 

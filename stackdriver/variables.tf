@@ -110,3 +110,10 @@ variable "cloud_sql_memory_utilization_threshold" {
   default = "0.8"
 }
 
+variable "pubsub_message_age_duration" {
+  default = "3600s"
+}
+
+variable "pubsub_message_age_threshold" {
+  default = "10"
+}
