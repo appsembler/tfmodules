@@ -110,3 +110,26 @@ variable "cloud_sql_memory_utilization_threshold" {
   default = "0.8"
 }
 
+variable "pubsub_message_age_duration" {
+  default = "3600s"
+}
+
+variable "pubsub_message_age_threshold" {
+  default = "10"
+}
+
+variable "datastore_high_reads_threshold" {
+  default = "50000"
+}
+
+variable "datastore_high_reads_duration" {
+  default = "3600s"
+}
+
+variable "datastore_high_writes_threshold" {
+  default = "20000"
+}
+
+variable "datastore_high_writes_duration" {
+  default = "3600s"
+}

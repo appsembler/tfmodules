@@ -71,7 +71,12 @@ triggers.
 * `cloud_sql_disk_write_ops_duration` - defaults to `3600s`
 * `cloud_sql_memory_utilization_threshold` - defaults to `0.8`
 * `cloud_sql_memory_utilization_duration` - defaults to `3600s`
-
+* `pubsub_message_age_threshold` - defaults to `10` (seconds)
+* `pubsub_message_age_duration` - defaults to `3600s`
+* `datastore_high_reads_threshold` - defaults to `50000`
+* `datastore_high_reads_duration` - defaults to `3600s`
+* `datastore_high_writes_threshold` - defaults to `20000`
+* `datastore_high_writes_duration` - defaults to `3600s`
 
 ## Outputs
 
@@ -79,6 +84,7 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-2.2.0` - Pub/Sub and Datastore alerts
 * `stackdriver-2.1.1` - adjust Cloud SQL write ops threshold
 * `stackdriver-2.1.0` - add Cloud SQL monitoring (basic CPU, disk, memory utilization)
 * `stackdriver-2.0.0` - require terraform 1.0.0
