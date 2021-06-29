@@ -509,9 +509,9 @@ resource "google_monitoring_alert_policy" "pubsub_message_age" {
     display_name = "Cloud Pub/Sub Subscription - Oldest unacked message age [MEAN]"
 
     condition_threshold {
-      filter          = "metric.type=\"pubsub.googleapis.com/subscription/oldest_unacked_message_age\" resource.type=\"pubsub_subscription\""
-      duration        = var.pubsub_message_age_duration
-      comparison      = "COMPARISON_GT"
+      filter     = "metric.type=\"pubsub.googleapis.com/subscription/oldest_unacked_message_age\" resource.type=\"pubsub_subscription\""
+      duration   = var.pubsub_message_age_duration
+      comparison = "COMPARISON_GT"
 
       threshold_value = var.pubsub_message_age_threshold
 
@@ -520,8 +520,8 @@ resource "google_monitoring_alert_policy" "pubsub_message_age" {
       }
 
       aggregations {
-        alignment_period     = "300s"
-        per_series_aligner   = "ALIGN_MEAN"
+        alignment_period   = "300s"
+        per_series_aligner = "ALIGN_MEAN"
       }
     }
   }
@@ -548,9 +548,9 @@ resource "google_monitoring_alert_policy" "datastore_high_reads" {
     display_name = "Sizes of read entities [COUNT]"
 
     condition_threshold {
-      filter          = "metric.type=\"datastore.googleapis.com/entity/read_sizes\" resource.type=\"datastore_request\""
-      duration        = var.datastore_high_reads_duration
-      comparison      = "COMPARISON_GT"
+      filter     = "metric.type=\"datastore.googleapis.com/entity/read_sizes\" resource.type=\"datastore_request\""
+      duration   = var.datastore_high_reads_duration
+      comparison = "COMPARISON_GT"
 
       threshold_value = var.datastore_high_reads_threshold
 
@@ -560,8 +560,8 @@ resource "google_monitoring_alert_policy" "datastore_high_reads" {
 
       aggregations {
         alignment_period     = "300s"
-	per_series_aligner   = "ALIGN_DELTA"
-	cross_series_reducer = "REDUCE_COUNT"
+        per_series_aligner   = "ALIGN_DELTA"
+        cross_series_reducer = "REDUCE_COUNT"
       }
     }
   }
@@ -588,9 +588,9 @@ resource "google_monitoring_alert_policy" "datastore_high_writes" {
     display_name = "Sizes of write entities [COUNT]"
 
     condition_threshold {
-      filter          = "metric.type=\"datastore.googleapis.com/entity/write_sizes\" resource.type=\"datastore_request\""
-      duration        = var.datastore_high_writes_duration
-      comparison      = "COMPARISON_GT"
+      filter     = "metric.type=\"datastore.googleapis.com/entity/write_sizes\" resource.type=\"datastore_request\""
+      duration   = var.datastore_high_writes_duration
+      comparison = "COMPARISON_GT"
 
       threshold_value = var.datastore_high_writes_threshold
 
@@ -600,8 +600,8 @@ resource "google_monitoring_alert_policy" "datastore_high_writes" {
 
       aggregations {
         alignment_period     = "300s"
-	per_series_aligner   = "ALIGN_DELTA"
-	cross_series_reducer = "REDUCE_COUNT"
+        per_series_aligner   = "ALIGN_DELTA"
+        cross_series_reducer = "REDUCE_COUNT"
       }
     }
   }
