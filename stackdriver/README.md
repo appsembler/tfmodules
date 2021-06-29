@@ -84,6 +84,7 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-2.2.1` - syntax error fix
 * `stackdriver-2.2.0` - Pub/Sub and Datastore alerts
 * `stackdriver-2.1.1` - adjust Cloud SQL write ops threshold
 * `stackdriver-2.1.0` - add Cloud SQL monitoring (basic CPU, disk, memory utilization)
