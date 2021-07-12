@@ -5,7 +5,13 @@ variable "project_id" {
 }
 
 variable "org_id" {
-  default = "508326437899"
+  type = number
+  default = 508326437899
+}
+
+variable "folder_id" {
+  type = string
+  default = null
 }
 
 variable "billing_account" {
