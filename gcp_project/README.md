@@ -40,6 +40,12 @@ we will consider auto-generating this.
   list --project <yourproject>` will give the list of currently
   enabled ones.
 * `labels` - (Optional) A set of key/value label pairs to assign to the project.
+* `org_id` - (Optional) defaults to the `noderabbit.com` org numerical id. 
+* `folder_id` - (Optional) id of a folder to place project
+  into. Usually this will be a reference to a resource like
+  `google_folder.infrastructure.name`. Defaults to `null`. If you you
+  set this parameter, you **must** also set `org_id = null`. GCP won't
+  allow both to be set.
 
 ## Outputs
 
@@ -49,6 +55,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-1.1.0` - add `folder_id` parameter to allow support placing projects in folders.
 * `gcp_project-1.0.0` - Terraform 1.0.0 support
 * `gcp_project-0.9.0` - no longer need google-beta provider
 * `gcp_project-0.8.1` - OS login integrated
