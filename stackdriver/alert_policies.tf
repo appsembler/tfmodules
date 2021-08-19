@@ -240,7 +240,7 @@ resource "google_monitoring_alert_policy" "memory_90" {
     display_name = "GCE VM Instance - Memory utilization"
 
     condition_threshold {
-      filter          = "metric.type=\"agent.googleapis.com/memory/percent_used\" resource.type=\"gce_instance\""
+      filter          = "metric.type=\"agent.googleapis.com/memory/percent_used\" resource.type=\"gce_instance\" metric.label.\"state\"!=\"free\""
       duration        = var.memory_duration
       comparison      = "COMPARISON_GT"
       threshold_value = var.memory_threshold

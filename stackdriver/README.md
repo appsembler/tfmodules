@@ -84,6 +84,7 @@ This module does not produce any outputs.
 
 ## Releases
 
+* `stackdriver-2.2.2` - exclude "free" memory from the high memory usage alert
 * `stackdriver-2.2.1` - syntax error fix
 * `stackdriver-2.2.0` - Pub/Sub and Datastore alerts
 * `stackdriver-2.1.1` - adjust Cloud SQL write ops threshold
