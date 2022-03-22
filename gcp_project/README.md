@@ -55,6 +55,7 @@ we will consider auto-generating this.
 
 ## Releases
 
+* `gcp_project-1.2.0` - enable vanta required services by default
 * `gcp_project-1.1.0` - add `folder_id` parameter to allow support placing projects in folders.
 * `gcp_project-1.0.0` - Terraform 1.0.0 support
 * `gcp_project-0.9.0` - no longer need google-beta provider
