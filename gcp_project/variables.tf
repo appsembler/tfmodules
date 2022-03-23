@@ -5,12 +5,12 @@ variable "project_id" {
 }
 
 variable "org_id" {
-  type = number
+  type    = number
   default = 508326437899
 }
 
 variable "folder_id" {
-  type = string
+  type    = string
   default = null
 }
 
